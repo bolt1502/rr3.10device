@@ -19,7 +19,7 @@ sudo apt-get update && sudo apt-get install git-core gnupg flex bison gperf libs
 ```
 mkdir ~/bin
 ```
-Патчим папке bin командой
+Патчим папку bin командой
 ```
 PATH=~/bin:$PATH
 ```
@@ -27,7 +27,28 @@ PATH=~/bin:$PATH
 ```
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 ```
+Делаем разрешение для repo командой
+```
+chmod a+x ~/bin/repo
+```
+###Скачка исходников и настройка
 
+Создаем папку DU и в ней запускаем командную строку. 
+
+```
+ mkdir ~/DU
+
+ cd ~/DU
+```
+
+```
+code block
+```
+
+
+```
+code block
+```
 
 
 
