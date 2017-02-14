@@ -1,7 +1,7 @@
-Highscreen Prime L (дерево устройства) для (Dirty Unicorns)
-===========================
+##Highscreen Prime L (дерево устройства) для сборки (Dirty Unicorns)
+---------------
 
-Getting Started
+Установка Репозитория
 ---------------
 
 Initialize a repository with LineageOS:
