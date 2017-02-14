@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DEVICE=meilan2
-VENDOR=meizu
+DEVICE=primel
+VENDOR=highscreen
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk

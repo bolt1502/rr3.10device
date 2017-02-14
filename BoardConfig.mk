@@ -1,5 +1,5 @@
-DEVICE_PATH := device/meizu/meilan2
-VENDOR_PATH := vendor/meizu/meilan2
+DEVICE_PATH := device/highscreen/primel
+VENDOR_PATH := vendor/highscreen/primel
 
 USE_CAMERA_STUB := true
 
@@ -60,8 +60,8 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 -
 
 #in case we want to build kernel from source
 # uncomment the following lines
-#TARGET_KERNEL_SOURCE := kernel/meizu/meilan2
-#TARGET_KERNEL_CONFIG := meilan2_debug_defconfig
+#TARGET_KERNEL_SOURCE := kernel/highscreen/primel
+#TARGET_KERNEL_CONFIG := primel_debug_defconfig
 #TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 #BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 # end of commented lines

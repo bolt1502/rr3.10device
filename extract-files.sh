@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export DEVICE=meilan2
-export VENDOR=meizu
+export DEVICE=primel
+export VENDOR=highscreen
 
 if [ $# -eq 0 ]; then
   SRC=adb
