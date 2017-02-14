@@ -1,4 +1,4 @@
-#Highscreen Prime L (дерево устройства) для сборки (Dirty Unicorns)
+#Highscreen Prime L (дерево устройства) для сборки прошивки *Dirty Unicorns*
 ---------------
 Инструкция по запуску компиляции Dirty Unicorns
 ---------------
@@ -48,14 +48,57 @@ git config —global user.email "aaa@bbbbbb.com" (емейл на который
 git config —global user.name "NAME" (Логин на гитхабе)
 ```
 Скачиваем исходники DU при помощи команды
-
 ```
 repo init -u http://github.com/DirtyUnicorns/android_manifest.git -b n7x-caf
 ```
+Cинховать исходники при помощи команды
+```
+repo sync
+```
+###Настройка дерева и Вендора устройства
 
+####Дерево
 
+Заходим в папку
+```
+cd ~/DU
+```
+Заходим в папку "Device"
+```
+cd device
+```
+Создаем папку "Highscreen" командой
+```
+mkdir highscreen
+```
+Заходим в папку "Highscreen"
+```
+cd highscreen
+```
+Скачиваем Дерево командой
+```
+git clone https://github.com/lunik1981/android_device_highscreen_primel -b du primel
+```
 
+```
+code block
+```
 
+```
+code block
+```
+
+```
+code block
+```
+
+```
+code block
+```
+
+```
+code block
+```
 
 
 
