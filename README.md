@@ -1,4 +1,4 @@
-Device repository for Meizu M2 Mini (LineageOS)
+Highscreen Prime L (дерево устройства) для (Dirty Unicorns)
 ===========================
 
 Getting Started
