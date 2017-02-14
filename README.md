@@ -1,6 +1,6 @@
-##Highscreen Prime L (дерево устройства) для сборки (Dirty Unicorns)
+#Highscreen Prime L (дерево устройства) для сборки (Dirty Unicorns)
 ---------------
-ИНСТРУКЦИЯ ПО ЗАПУСКУ Dirty Unicorns
+Инструкция по запуску компиляции Dirty Unicorns
 ---------------
 
 ###Установка JAVA
@@ -40,14 +40,17 @@ chmod a+x ~/bin/repo
 
  cd ~/DU
 ```
+Логинимся в git (если учетки нету, вам сюда https://github.com/ ) 
 
 ```
-code block
-```
+git config —global user.email "aaa@bbbbbb.com" (емейл на который была зарегистрирована учетка гитхаба) 
 
+git config —global user.name "NAME" (Логин на гитхабе)
+```
+Скачиваем исходники DU при помощи команды
 
 ```
-code block
+repo init -u http://github.com/DirtyUnicorns/android_manifest.git -b n7x-caf
 ```
 
 
