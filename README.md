@@ -79,94 +79,90 @@ cd highscreen
 ```
 git clone https://github.com/lunik1981/android_device_highscreen_primel -b du primel
 ```
+####Вендор
 
+Заходим в папку DU
 ```
-code block
+cd ~/DU
 ```
-
+Заходим в папку "Vendor"
 ```
-code block
+cd vendor
 ```
-
+Создаем папку "Highscreen" командой
 ```
-code block
+mkdir highscreen
 ```
-
+Скачиваем Вендор командой
 ```
-code block
+git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b du primel
 ```
+###Кеш,Сборка,Джек сервер
 
+####Кеш
+
+Устанавливаем КЕШ при сборке (Я делаю в ручную потому что так надежнее)
+
+Открывает свою домашнюю папку (HOME), Нажимаем Ctrl+H, Открываем файл ***.bashrc*** и в самый низ вставляем
 ```
-code block
+ export USE_CCACHE=1
 ```
+```
+ export ANDROID_JACK_VM_ARGS="-Xmx8192m -Xms512m -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
+```
+(Где Xmx8192m это количество оперативной памяти)
 
+####Джек сервер
 
+Пишем команду в корне папки DU
+```
+./prebuilts/sdk/tools/jack-admin kill-server
+```
+(Эта команда удаляет процесс рабочего сервера ДЖЭК, если он вдруг сейчас работает)
 
+Нормальный ответ (означает что процесса не было)
+```
+/android/system$ ./prebuilts/sdk/tools/jack-admin kill-server
+Writing local settings in /home/hard/.jack
+Killing background server
+ERROR: No Jack server to kill
+```
+Запускаем сервер командой из папки DU
+```
+./prebuilts/sdk/tools/jack-admin start-server
+```
+###Сборка
 
+Заходим в папку DU командой
+```
+cd ~/DU
+```
+Вводим команду
+```
+source build/envsetup.sh
+```
+Вводим команду
+```
+lunch
+```
+Выбираем телефон
+```
+du_primel-userdebug
+```
+Вводим команду
+```
+mka bacon
+```
+НАЧИНАЕТСЯ СБОРКА))))
 
-
-
-
-
-
-
-
-
-
-    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2
-
-Optinally use a specific manifest (not a tip):
-
-    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.1.xml
-
-Build the code:
-
-    source build/envsetup.sh
-    breakfast meilan2
-    make -j 4 bacon showcommands 2>&1 | tee build.log
-
-Current state
--------------
-
-- System boots
-- Touch, screen, keyboard, central key are working
-- Wifi is working
-- Audio is working
-- Telephony is working (see Known Issues)
-    - USIM (3G) supported
-    - Incoming/outgoung call
-    - SMS, USSD
-    - Data connectivity
-- GPS
-- Bluetooth (pairing only testes so far)
-- Sensors
-- Camera
-
-Known Issues
--------------
-- Android Camera App is not stable (hangs) ex. with location enabled
-- Meizu Camera App is crasing when switching to front camera
-- Telephony crashes eventually on location request from camera. 
-- Hardware OMX codecs are not working
-
-All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
-
-Change log
-----------
-
-### v0.1 (LineageOS)
-- Switch from CyanogenMod to LineageOS (use LineageOS manifest, repositories)
-- Fix for offline charging
-- Remove -6dB limit for system sounds
-
-### v0.2 (CyanogenMod 14.1)
-- Fixed an issue with proximity on some devices
-- Fixed an issue with ICC IO in MTK ril (no radio with some SIM cards)
-- Fixed a modem crash caused by mtk_agps request
-- Fixed an issue with WiFi SoftAP
-- Ported power HAL from CyanogenMod 6735 (also implements Double Tap To Wake feature)
-- Ported FOTA solution from meilan2 cm-12.1
-
-### v0.1 (CyanogenMod 14.1)
-- Initial port from cm-14.0 (v0.3) to cm-14.1
+PS. Если  Будет ошибка ДЖЕКА то заходим в паку **DU/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
+```
+# Off ninja
+#USE_NINJA=false
+```
+Чтобы было вот так
+```
+# Off ninja
+USE_NINJA=false 
+```
 
