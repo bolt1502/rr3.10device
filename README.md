@@ -1,10 +1,36 @@
 ##Highscreen Prime L (дерево устройства) для сборки (Dirty Unicorns)
 ---------------
-
-Установка Репозитория
+ИНСТРУКЦИЯ ПО ЗАПУСКУ Dirty Unicorns
 ---------------
 
-Initialize a repository with LineageOS:
+###Установка JAVA
+Устанавливаем JAVA командой
+
+```
+sudo apt-get install openjdk-8-jdk
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2
 
