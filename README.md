@@ -84,7 +84,7 @@ git clone https://github.com/lunik1981/android_device_highscreen_primel -b Resur
 
 Заходим в папку RR
 ```
-cd ~/DU
+cd ~/RR
 ```
 Заходим в папку "Vendor"
 ```
