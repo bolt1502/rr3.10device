@@ -1,4 +1,4 @@
-#Highscreen Prime L (дерево устройства) для сборки прошивки *Dirty Unicorns*
+#Highscreen Prime L (дерево устройства) для сборки прошивки *Resurrection Remix-N*
 ###Это дерево создано на основе работы @divis1969 , без него ничего бы не было.###
 ---------------
 Инструкция по запуску компиляции Dirty Unicorns
@@ -34,12 +34,12 @@ chmod a+x ~/bin/repo
 ```
 ###Скачка исходников и настройка
 
-Создаем папку DU и в ней запускаем командную строку. 
+Создаем папку RR и в ней запускаем командную строку. 
 
 ```
- mkdir ~/DU
+ mkdir ~/RR
 
- cd ~/DU
+ cd ~/RR
 ```
 Логинимся в git (если учетки нету, вам сюда https://github.com/ ) 
 
@@ -48,13 +48,13 @@ git config —global user.email "aaa@bbbbbb.com" (емейл на который
 
 git config —global user.name "NAME" (Логин на гитхабе)
 ```
-Скачиваем исходники DU при помощи команды
+Скачиваем исходники RR при помощи команды
 ```
-repo init -u http://github.com/DirtyUnicorns/android_manifest.git -b n7x-caf
+repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -b nougat
 ```
 Cинховать исходники при помощи команды
 ```
-repo sync
+repo sync -f --force-sync --no-clone-bundle
 ```
 ###Настройка дерева и Вендора устройства
 
@@ -62,7 +62,7 @@ repo sync
 
 Заходим в папку
 ```
-cd ~/DU
+cd ~/RR
 ```
 Заходим в папку "Device"
 ```
@@ -78,11 +78,11 @@ cd highscreen
 ```
 Скачиваем Дерево командой
 ```
-git clone https://github.com/lunik1981/android_device_highscreen_primel -b du primel
+git clone https://github.com/lunik1981/android_device_highscreen_primel -b Resurrection-Remix-N primel
 ```
 ####Вендор
 
-Заходим в папку DU
+Заходим в папку RR
 ```
 cd ~/DU
 ```
@@ -96,7 +96,7 @@ mkdir highscreen
 ```
 Скачиваем Вендор командой
 ```
-git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b du primel
+git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Resurrection-Remix-N primel
 ```
 ###Кеш,Сборка,Джек сервер
 
@@ -115,7 +115,7 @@ git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b du pr
 
 ####Джек сервер
 
-Пишем команду в корне папки DU
+Пишем команду в корне папки RR
 ```
 ./prebuilts/sdk/tools/jack-admin kill-server
 ```
@@ -128,19 +128,19 @@ Writing local settings in /home/hard/.jack
 Killing background server
 ERROR: No Jack server to kill
 ```
-Запускаем сервер командой из папки DU
+Запускаем сервер командой из папки RR
 ```
 ./prebuilts/sdk/tools/jack-admin start-server
 ```
 ###Сборка
 
-Заходим в папку DU командой
+Заходим в папку RR командой
 ```
-cd ~/DU
+cd ~/RR
 ```
 Вводим команду
 ```
-source build/envsetup.sh
+. build/envsetup.sh
 ```
 Вводим команду
 ```
@@ -148,7 +148,7 @@ lunch
 ```
 Выбираем телефон
 ```
-du_primel-userdebug
+rr_primel-userdebug
 ```
 Вводим команду
 ```
@@ -156,7 +156,7 @@ mka bacon
 ```
 НАЧИНАЕТСЯ СБОРКА))))
 
-PS. Если  Будет ошибка ДЖЕКА то заходим в паку **DU/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
+PS. Если  Будет ошибка ДЖЕКА то заходим в паку **RR/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
 ```
 # Off ninja
 #USE_NINJA=false
