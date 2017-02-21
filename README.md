@@ -1,9 +1,9 @@
-#Highscreen Prime L (дерево устройства) для сборки прошивки *Resurrection Remix-N*
+#Highscreen Prime L (дерево устройства) для сборки прошивки *MoKee-N*
 ###Это дерево создано на основе работы @divis1969 , без него ничего бы не было.###
 ---------------
-Инструкция по запуску компиляции Resurrection Remix-N
+Инструкция по запуску компиляции MoKee Nougat
 ---------------
-![alt text](http://cs5-3.4pda.to/8551833.jpg)
+![alt text](http://cs5-2.4pda.to/9282743.jpg)
 
 ###Установка JAVA
 Устанавливаем java командой
@@ -35,12 +35,12 @@ chmod a+x ~/bin/repo
 ```
 ###Скачка исходников и настройка
 
-Создаем папку RR и в ней запускаем командную строку. 
+Создаем папку MK и в ней запускаем командную строку. 
 
 ```
- mkdir ~/RR
+ mkdir ~/mk
 
- cd ~/RR
+ cd ~/mk
 ```
 Логинимся в git (если учетки нету, вам сюда https://github.com/ ) 
 
@@ -49,13 +49,13 @@ git config —global user.email "aaa@bbbbbb.com" (емейл на который
 
 git config —global user.name "NAME" (Логин на гитхабе)
 ```
-Скачиваем исходники RR при помощи команды
+Скачиваем исходники MK при помощи команды
 ```
-repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -b nougat
+repo init -u https://github.com/MoKee/android.git -b mkn-mr1
 ```
 Cинховать исходники при помощи команды
 ```
-repo sync -f --force-sync --no-clone-bundle
+repo sync
 ```
 ###Настройка дерева и Вендора устройства
 
@@ -63,7 +63,7 @@ repo sync -f --force-sync --no-clone-bundle
 
 Заходим в папку
 ```
-cd ~/RR
+cd ~/mk
 ```
 Заходим в папку "Device"
 ```
@@ -79,13 +79,13 @@ cd highscreen
 ```
 Скачиваем Дерево командой
 ```
-git clone https://github.com/lunik1981/android_device_highscreen_primel -b Resurrection-Remix-N primel
+git clone https://github.com/lunik1981/android_device_highscreen_primel -b Mokee-N primel
 ```
 ####Вендор
 
-Заходим в папку RR
+Заходим в папку MK
 ```
-cd ~/RR
+cd ~/mk
 ```
 Заходим в папку "Vendor"
 ```
@@ -97,7 +97,7 @@ mkdir highscreen
 ```
 Скачиваем Вендор командой
 ```
-git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Resurrection-Remix-N primel
+git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Mokee-N primel
 ```
 ###Кеш,Сборка,Джек сервер
 
@@ -116,7 +116,7 @@ git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Resur
 
 ####Джек сервер
 
-Пишем команду в корне папки RR
+Пишем команду в корне папки MK
 ```
 ./prebuilts/sdk/tools/jack-admin kill-server
 ```
@@ -129,15 +129,15 @@ Writing local settings in /home/hard/.jack
 Killing background server
 ERROR: No Jack server to kill
 ```
-Запускаем сервер командой из папки RR
+Запускаем сервер командой из папки MK
 ```
 ./prebuilts/sdk/tools/jack-admin start-server
 ```
 ###Сборка
 
-Заходим в папку RR командой
+Заходим в папку MK командой
 ```
-cd ~/RR
+cd ~/mk
 ```
 Вводим команду
 ```
@@ -149,7 +149,7 @@ lunch
 ```
 Выбираем телефон
 ```
-rr_primel-userdebug
+mk_primel-userdebug
 ```
 Вводим команду
 ```
@@ -157,7 +157,7 @@ mka bacon
 ```
 НАЧИНАЕТСЯ СБОРКА))))
 
-PS. Если  Будет ошибка ДЖЕКА то заходим в паку **RR/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
+PS. Если  Будет ошибка ДЖЕКА то заходим в паку **mk/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
 ```
 # Off ninja
 #USE_NINJA=false
