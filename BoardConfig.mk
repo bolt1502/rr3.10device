@@ -88,6 +88,16 @@ WIFI_DRIVER_FW_PATH_STA:=STA
 WIFI_DRIVER_FW_PATH_AP:=AP
 WIFI_DRIVER_FW_PATH_P2P:=P2P
 
+# Offline charging
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+RED_LED_PATH := "/sys/class/leds/red/brightness"
+GREEN_LED_PATH := "/sys/class/leds/green/brightnes"
+BLUE_LED_PATH := "/sys/class/leds/blue/brightnes"
+BACKLIGHT_PATH := "/sys/class/leds/lcd_backlight0/brightness"
+CHARGING_ENABLED_PATH := "/sys/class/hw_power/charger/charge_data/enable_charger"
+HEALTHD_BACKLIGHT_LEVEL := 60
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true

@@ -1,170 +1,65 @@
-#Highscreen Prime L (дерево устройства) для сборки прошивки *Resurrection Remix-N*
-###Это дерево создано на основе работы @divis1969 , без него ничего бы не было.###
+Device repository for Meizu M2 Mini (LineageOS)
+===========================
+
+Getting Started
 ---------------
-Инструкция по запуску компиляции Resurrection Remix-N
----------------
-![alt text](http://cs5-3.4pda.to/8551833.jpg)
 
-###Установка JAVA
-Устанавливаем java командой
-```
-sudo apt-get install openjdk-8-jdk
-```
-Добавляем пакеты для java командой
-```
-sudo apt-get update && sudo apt-get install git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.8-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev openjdk-8-jre openjdk-8-jdk pngcrush schedtool libxml2 libxml2-utils xsltproc lzop libc6-dev schedtool g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline-gplv2-dev gcc-multilib maven tmux screen w3m ncftp
-```
-###Установка Репозитория
+Initialize a repository with LineageOS:
 
-Создаем папку bin командой
+    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2
 
-```
-mkdir ~/bin
-```
-Патчим папку bin командой
-```
-PATH=~/bin:$PATH
-```
-Добавляем repo командой
-```
-curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-```
-Делаем разрешение для repo командой
-```
-chmod a+x ~/bin/repo
-```
-###Скачка исходников и настройка
+Optinally use a specific manifest (not a tip):
 
-Создаем папку RR и в ней запускаем командную строку. 
+    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.1.xml
 
-```
- mkdir ~/RR
+Build the code:
 
- cd ~/RR
-```
-Логинимся в git (если учетки нету, вам сюда https://github.com/ ) 
+    source build/envsetup.sh
+    breakfast meilan2
+    make -j 4 bacon showcommands 2>&1 | tee build.log
 
-```
-git config —global user.email "aaa@bbbbbb.com" (емейл на который была зарегистрирована учетка гитхаба) 
+Current state
+-------------
 
-git config —global user.name "NAME" (Логин на гитхабе)
-```
-Скачиваем исходники RR при помощи команды
-```
-repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -b nougat
-```
-Cинховать исходники при помощи команды
-```
-repo sync -f --force-sync --no-clone-bundle
-```
-###Настройка дерева и Вендора устройства
+- System boots
+- Touch, screen, keyboard, central key are working
+- Wifi is working
+- Audio is working
+- Telephony is working (see Known Issues)
+    - USIM (3G) supported
+    - Incoming/outgoung call
+    - SMS, USSD
+    - Data connectivity
+- GPS
+- Bluetooth (pairing only testes so far)
+- Sensors
+- Camera
 
-####Дерево
+Known Issues
+-------------
+- Android Camera App is not stable (hangs) ex. with location enabled
+- Meizu Camera App is crasing when switching to front camera
+- Telephony crashes eventually on location request from camera. 
+- Hardware OMX codecs are not working
 
-Заходим в папку
-```
-cd ~/RR
-```
-Заходим в папку "Device"
-```
-cd device
-```
-Создаем папку "Highscreen" командой
-```
-mkdir highscreen
-```
-Заходим в папку "Highscreen"
-```
-cd highscreen
-```
-Скачиваем Дерево командой
-```
-git clone https://github.com/lunik1981/android_device_highscreen_primel -b Resurrection-Remix-N primel
-```
-####Вендор
+All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
-Заходим в папку RR
-```
-cd ~/RR
-```
-Заходим в папку "Vendor"
-```
-cd vendor
-```
-Создаем папку "Highscreen" командой
-```
-mkdir highscreen
-```
-Скачиваем Вендор командой
-```
-git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Resurrection-Remix-N primel
-```
-###Кеш,Сборка,Джек сервер
+Change log
+----------
 
-####Кеш
+### v0.1 (LineageOS)
+- Switch from CyanogenMod to LineageOS (use LineageOS manifest, repositories)
+- Fix for offline charging
+- Remove -6dB limit for system sounds
 
-Устанавливаем КЕШ при сборке (Я делаю в ручную потому что так надежнее)
+### v0.2 (CyanogenMod 14.1)
+- Fixed an issue with proximity on some devices
+- Fixed an issue with ICC IO in MTK ril (no radio with some SIM cards)
+- Fixed a modem crash caused by mtk_agps request
+- Fixed an issue with WiFi SoftAP
+- Ported power HAL from CyanogenMod 6735 (also implements Double Tap To Wake feature)
+- Ported FOTA solution from meilan2 cm-12.1
 
-Открывает свою домашнюю папку (HOME), Нажимаем Ctrl+H, Открываем файл ***.bashrc*** и в самый низ вставляем
-```
- export USE_CCACHE=1
-```
-```
- export ANDROID_JACK_VM_ARGS="-Xmx8192m -Xms512m -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
-```
-(Где Xmx8192m это количество оперативной памяти)
-
-####Джек сервер
-
-Пишем команду в корне папки RR
-```
-./prebuilts/sdk/tools/jack-admin kill-server
-```
-(Эта команда удаляет процесс рабочего сервера ДЖЭК, если он вдруг сейчас работает)
-
-Нормальный ответ (означает что процесса не было)
-```
-/android/system$ ./prebuilts/sdk/tools/jack-admin kill-server
-Writing local settings in /home/hard/.jack
-Killing background server
-ERROR: No Jack server to kill
-```
-Запускаем сервер командой из папки RR
-```
-./prebuilts/sdk/tools/jack-admin start-server
-```
-###Сборка
-
-Заходим в папку RR командой
-```
-cd ~/RR
-```
-Вводим команду
-```
-. build/envsetup.sh
-```
-Вводим команду
-```
-lunch
-```
-Выбираем телефон
-```
-rr_primel-userdebug
-```
-Вводим команду
-```
-mka bacon
-```
-НАЧИНАЕТСЯ СБОРКА))))
-
-PS. Если  Будет ошибка ДЖЕКА то заходим в паку **RR/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
-```
-# Off ninja
-#USE_NINJA=false
-```
-Чтобы было вот так
-```
-# Off ninja
-USE_NINJA=false 
-```
+### v0.1 (CyanogenMod 14.1)
+- Initial port from cm-14.0 (v0.3) to cm-14.1
 

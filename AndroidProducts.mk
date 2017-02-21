@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_primel.mk
+    $(LOCAL_DIR)/aosp_primel.mk
