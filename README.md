@@ -1,9 +1,9 @@
-#Highscreen Prime L (дерево устройства) для сборки прошивки *MoKee-N*
+#Highscreen Prime L (дерево устройства) для сборки прошивки *crDroid Android*
 ###Это дерево создано на основе работы @divis1969 , без него ничего бы не было.###
 ---------------
-Инструкция по запуску компиляции MoKee Nougat
+Инструкция по запуску компиляции crDroid Android Nougat
 ---------------
-![alt text](http://cs5-2.4pda.to/9282743.jpg)
+![alt text](http://cs5-3.4pda.to/6536178.png)
 
 ###Установка JAVA
 Устанавливаем java командой
@@ -35,12 +35,12 @@ chmod a+x ~/bin/repo
 ```
 ###Скачка исходников и настройка
 
-Создаем папку MK и в ней запускаем командную строку. 
+Создаем папку DR и в ней запускаем командную строку. 
 
 ```
- mkdir ~/mk
+ mkdir ~/dr
 
- cd ~/mk
+ cd ~/dr
 ```
 Логинимся в git (если учетки нету, вам сюда https://github.com/ ) 
 
@@ -51,7 +51,7 @@ git config —global user.name "NAME" (Логин на гитхабе)
 ```
 Скачиваем исходники MK при помощи команды
 ```
-repo init -u https://github.com/MoKee/android.git -b mkn-mr1
+epo init -u https://github.com/crdroidandroid/android -b 7.1
 ```
 Cинховать исходники при помощи команды
 ```
@@ -63,7 +63,7 @@ repo sync
 
 Заходим в папку
 ```
-cd ~/mk
+cd ~/dr
 ```
 Заходим в папку "Device"
 ```
@@ -79,13 +79,13 @@ cd highscreen
 ```
 Скачиваем Дерево командой
 ```
-git clone https://github.com/lunik1981/android_device_highscreen_primel -b Mokee-N primel
+git clone https://github.com/lunik1981/android_device_highscreen_primel -b Droid primel
 ```
 ####Вендор
 
-Заходим в папку MK
+Заходим в папку DR
 ```
-cd ~/mk
+cd ~/dr
 ```
 Заходим в папку "Vendor"
 ```
@@ -97,7 +97,7 @@ mkdir highscreen
 ```
 Скачиваем Вендор командой
 ```
-git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Mokee-N primel
+git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Droid primel
 ```
 ###Кеш,Сборка,Джек сервер
 
@@ -116,7 +116,7 @@ git clone https://github.com/lunik1981/android_vendor_highscreen_primel -b Mokee
 
 ####Джек сервер
 
-Пишем команду в корне папки MK
+Пишем команду в корне папки DR
 ```
 ./prebuilts/sdk/tools/jack-admin kill-server
 ```
@@ -129,15 +129,15 @@ Writing local settings in /home/hard/.jack
 Killing background server
 ERROR: No Jack server to kill
 ```
-Запускаем сервер командой из папки MK
+Запускаем сервер командой из папки DR
 ```
 ./prebuilts/sdk/tools/jack-admin start-server
 ```
 ###Сборка
 
-Заходим в папку MK командой
+Заходим в папку DR командой
 ```
-cd ~/mk
+cd ~/dr
 ```
 Вводим команду
 ```
@@ -149,7 +149,7 @@ lunch
 ```
 Выбираем телефон
 ```
-mk_primel-userdebug
+lineage_primel-userdebug
 ```
 Вводим команду
 ```
@@ -157,7 +157,7 @@ mka bacon
 ```
 НАЧИНАЕТСЯ СБОРКА))))
 
-PS. Если  Будет ошибка ДЖЕКА то заходим в паку **mk/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
+PS. Если  Будет ошибка ДЖЕКА то заходим в паку **dr/device/highscreen/primel находим там файл device_primel.mk** и разкоментируем
 ```
 # Off ninja
 #USE_NINJA=false
