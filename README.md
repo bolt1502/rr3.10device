@@ -1,10 +1,3 @@
-# android_device_alps_k05ts_a
-Device repository for Elephone P8000 CM12.1 (WIP)
-
-current state:
- * Cyanogen Recovery works except external sd mounting
-
-TODO:
- * get external SD to work
- * port TWRP
- * make tree compatible with CM12.1
+#Highscreen Prime L (Gionne P5L, Allvew V2 Viper i4G)
+---------------
+![alt text](http://moygorod-online.ru/netcat_files/372/636/main_thumb1.jpeg)
