@@ -28,8 +28,9 @@
 /system/bin/memsicd3524x                                        u:object_r:memsicd3524x_exec:s0
 /system/bin/qmcX983d                                            u:object_r:qmcX983d_exec:s0
 #/system/bin/guiext-server                                       u:object_r:guiext-server_exec:s0
-/system/bin/meizupshelper                                       u:object_r:meizupshelper_exec:s0
+#/system/bin/meizupshelper                                       u:object_r:meizupshelper_exec:s0
 /system/bin/kpoc_charger                                        u:object_r:kpoc_charger_exec:s0
+
 
 # Meta mode
 /sbin/multi_init                                                u:object_r:init_exec:s0
@@ -60,6 +61,9 @@
 /dev/kd_camera_flashlight                                       u:object_r:camera_device:s0
 /dev/MAINAF                                                     u:object_r:camera_device:s0
 /dev/MTK_SMI                                                    u:object_r:camera_device:s0
+/dev/mtk_jpeg(/.*)                                              u:object_r:camera_device:s0
+/dev/DW9714AF(/.*)?                                             u:object_r:camera_device:s0
+/dev/CAM_CAL_DRV(/.*)?                                          u:object_r:camera_device:s0
 /dev/MT_pmic_adc_cali                                           u:object_r:pmic_adc_device:s0
 /dev/als_ps(/.*)?                                               u:object_r:als_ps_device:s0
 /dev/mtk-adc-cali(/.*)?                                         u:object_r:mtk-adc-cali_device:s0
